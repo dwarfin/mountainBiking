@@ -1,211 +1,183 @@
-body {
+/* Changes to css:
+    - Condensed some code
+    - Added y-scroll so all videos/information
+      boxes are visible on smaller screens
+    - Added a new theme
+    - Changed background image on theme change
+    - Utilization of :root to aid in theme switch
+    - Changed heading font
+*/
+
+:root {
+    --text-color: black;
+    --text-color-contrast: black;
+    --text-color-img: black;
+    --background-color-main: #d8f2d9;
+    --background-color-secondary: #FFFFE0; 
+    --background-color-tertiary: #FFB6C1; 
+    --hover-color: #ad0b2e; 
+    --heading-text: 'Amatic SC', cursive, 'Raleway', sans-serif;
+    --reading-text: 'Raleway', 'Courier New', Courier, monospace;
+}
+
+#theme-switch {
+    transition: transform 0.75s ease;
+}
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: auto;
-}
-
-.navbar {
-    position: fixed;
-    background-color: lightslategray;
-    border-bottom: 1px solid whitesmoke;
+/* Styles for the header and footer */
+header, footer {
+    background-color: var(--background-color-main);
+    color: var(--text-color);
+    font-family: var(--reading-text);
     height: 50px;
-    width: 100%;
-    z-index: 3;
-
     display: flex;
-}
-
-#header-nav {
-    color: whitesmoke;
-    padding-top: 12.5px;
-    font-size: 1.025em;
-    transition: all .4s ease-in-out; 
-}
-
-#header-nav :hover {
-    color: #baada1;
-    transform: scale(1.1); 
-}
-
-.navbar > nav > a {
-    float: left;
-    font-family: 'Raleway', 'Courier New', Courier, monospace;
-    display: block;
-    color: whitesmoke;
-    text-align: center;
-    padding: 0px 16px;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
 }
 
-section {
+header {
     position: sticky;
+    top: 0;
+    z-index: 1;
+    border-bottom: 1px solid var(--text-color);
+}
+
+footer {
+    border-top: 1px solid var(--text-color);
+}
+
+/* Links in the header */
+a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--hover-color);
+    text-decoration: none;
+}
+
+.header-nav li{
+    display: inline;
+
+    /* padding: 1em; */
+    list-style-type: none;
+    padding: .25em;
+}
+
+/* Styles for card stacks on scroll */
+.card {
+    width: 100vw;
+    height: calc(100vh - 50px);
+    overflow-y: scroll;
+    background-color: var(--background-color-secondary);
+    position: sticky;
+
     top: 50px;
+    color: var(--text-color);
+    border-top: 1px solid var(--text-color);
+    font-family: var(--reading-text);
+    font-size: 1.25em;
+
+    display: flex;
+    justify-content: center;
+
+    /* Do not use align items as it will ruin videos section on smaller screens */
 }
 
-.grid-item1 {
-    grid-column: 1/7;
-    grid-row: 1;
-    display: grid;
-    grid-template-rows: auto;
+.card-container section:nth-child(even) {
+    background-color: var(--background-color-main);
 }
 
-#hero-img {
-    width: 100%;
-    grid-row: 1;
-    grid-column: 1/7;
+#card-item1 {
+    color: var(--text-color-img);
+    display: flex;
+    flex-direction: column;
+
+    background-image: url("../images/image.jpg");
+    width: auto;
 }
 
-figcaption {
-    position: static;
-    grid-column: 1/2;
-    top: 10px;
-    grid-row: 1;
-    color: whitesmoke;
-    font-family: 'Raleway', 'Courier New', Courier, monospace;
-    /* font-size: 1.15rem; */
-    white-space: nowrap;
-}
-
+/* Hero img/text */
 #hero-txt {
-    grid-column: 5/6;
-    grid-row: 1;
-    color: whitesmoke;
-    text-align: right;
-    align-content: center;
-    font-family: 'Amatic SC', cursive, 'Raleway', sans-serif;
-    font-size: 2.5rem;
+    position: absolute;
+    z-index: 1;
+    top: 5%;
+    left: 5%;
+    font-family: var(--heading-text);
+    font-size: 2.25em;
+    text-align: left;
+    word-wrap: normal;
 }
 
-.grid-item2 {
-    grid-column: 1/7;
-    grid-row: 2;
+#hero-fig {
+    z-index: 1;
+    top: 0;
+    left: 0;
+    font-family: var(--reading-text);
+    font-size: .35em;
+    text-align: left;
 }
 
-.grid-item3 {
-    grid-column: 1/7;
-    grid-row: 3;
-}
-
-.grid-item4 {
-    grid-column: 1/7;
-    grid-row: 4;
-}
-
+/* Styles for information boxes */
 .background2 {
     position: relative;
-    display: flex;
-    background-color: lightslategray;
-    padding: 35px 0px;
+    background-color: var(--background-color-main);
     z-index: 2;
 
-    gap: 15px;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: space-around;
+    gap: 15px;
 }
 
 .box {
-    margin: 25px 0px;
-    width: 350px;
-    color: black;
+    position: relative;
+    color: var(--text-color-contrast);
     border-radius: 15px;
     opacity: 0;
     transition: all 3s;
-}
-
-.background3 {
-    /* position: relative; */
+    text-align: center;
+    padding: 10px;
+    margin: 25px 0px;
     display: flex;
-    background-color: #887766;
-    padding: 35px 0px;
-    z-index: 2;
-
-    gap: 5px;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-content: center;
-    text-align: center;
-}
-
-.video-descriptor {
-    font-family: 'Montserrat', sans-serif;
-    color: whitesmoke;
-    font-size: 20px;
-    padding: 15px;
-    line-height: 25px;
-    text-align: center;
-}
-
-.background4 {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    background-color: lightslategray;
-    padding: 35px 0px;
-    z-index: 2;
-
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: space-around;
-}
-
-.map {
-    margin: auto;
-    width: 425px;
-}
-
-.map > p {
-    color: whitesmoke;
-    font-size: 15px;
-}
-
-div > p {
-    font-family: 'Montserrat', sans-serif;
-    padding: 25px;
-    line-height: 25px;
-    text-align: center;
-}
-
-.tb {
-    background-color: white;
-    width: 100%;
 }
 
 .show {
     opacity: 1;
-    background-color: whitesmoke;
+    background-color: var(--background-color-tertiary);
+    /* padding: none; */
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
 }
 
-.footer {
-    grid-column: 1/7;
-
-    height: 50px;
-    width: 100%;
-    z-index: 3;
-}
-
-#footer-nav{
-    position: static;
-    background-color: lightslategray;
-    border-top: 1px solid whitesmoke;
-    
-    color: whitesmoke;
-    padding-top: 12.5px;
-    font-size: 1.15em;
-
+/* Video containers */
+.background3 {
     display: flex;
-    justify-content: space-around;
-    align-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
-#copy {
-    font-family: 'Raleway', 'Courier New', Courier, monospace;
-    text-decoration: none;
-    align-content: center;
+.videos {
+  margin: 10px;
+}
+
+/* Map styles */
+.map {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    gap: 1em;
+    padding: 1em;
+    text-align: center;
 }

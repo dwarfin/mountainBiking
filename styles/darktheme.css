@@ -1,0 +1,11 @@
+:root {
+    --text-color: whitesmoke;
+    --text-color-contrast: black;
+    --text-color-img: whitesmoke;
+    --background-color-main: lightslategray;
+    --background-color-secondary: #887766;
+    --background-color-tertiary: whitesmoke; 
+    --hover-color: #baada1; 
+    --heading-text: 'Permanent Marker', cursive;
+    --reading-text: 'Raleway', 'Courier New', Courier, monospace;
+}
