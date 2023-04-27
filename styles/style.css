@@ -1,12 +1,26 @@
 /* Changes to css:
-    - Condensed some code
-    - Added y-scroll so all videos/information
-      boxes are visible on smaller screens
-    - Added a new theme
-    - Changed background image on theme change
-    - Utilization of :root to aid in theme switch
-    - Changed heading font
+    - Added styles to the form
+    - Added styles to the inputs and labels
+    - Fixed horizonatal scroll on smaller devices by adding an @media
 */
+
+/* Project:  Project 5
+Name: Isaac Reyes
+Submitted: 4/26/23
+ 
+I declare that the following source code was written by me, or provided
+by the instructor for this project. I understand that copying source
+code from any other source, providing source code to another student, 
+or leaving my code on a public web site constitutes cheating.
+I acknowledge that  If I am found in violation of this policy this may result
+in a zero grade, a permanent record on file and possibly immediate failure of the class.
+ 
+Reflection (1-2 paragraphs): When I was brainstorming ideas for my website I had this one idea
+    to have a website that each new section would scroll ontop of eachother. It sounded like a
+    cool idea and thought it would be an easy one to implemnt. This feature is what I struggled with the
+    most. At first I was running into z-index problems and tried using fixed position for each section.
+    I later came to figure out that sticky postions would be a better alternative and they helped 
+    me to achieve this feature. I am proud of the feature and think it looks and workds great. */
 
 :root {
     --text-color: black;
@@ -144,7 +158,7 @@ a:hover{
     opacity: 0;
     transition: all 3s;
     text-align: center;
-    padding: 10px;
+    padding: 1em;
     margin: 25px 0px;
     display: flex;
 }
@@ -167,7 +181,7 @@ a:hover{
 }
 
 .videos {
-  margin: 10px;
+  margin: 1em;
 }
 
 /* Map styles */
@@ -180,4 +194,107 @@ a:hover{
     gap: 1em;
     padding: 1em;
     text-align: center;
+}
+
+.formContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3em;
+}
+
+.form {
+    background-color: var(--background-color-main);
+    padding: 1em;
+    width: 100%;
+    display: flex;
+    grid-gap: 1em;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-radius: 15px;
+    justify-content: space-around;
+}
+
+.label, .input {
+    display: flex;
+    align-items: center;
+    width: auto;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.input {
+    border: var(--text-color-contrast) 1px solid;
+}
+
+.input:focus {
+    outline: none;
+    border: var(--text-color-contrast) 2px solid;
+}
+ 
+input[type=submit] {
+    width: 100%;
+    color: var(--text-color-contrast);
+    background-color: var(--background-color-tertiary);
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submitItem {
+    flex-basis: 75%;
+}
+
+h2 {
+    text-align: center;
+}
+
+.find {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkboxContainer {
+    text-align: left;
+}
+
+.correctInput {
+    outline: none;
+    border: #4CAF50 2px solid;
+    background-color:  rgba(76, 175, 80, 0.4);
+}
+
+.errorMessage {
+    color: #ad0b2e;
+}
+
+/*Only show error information when 'incorrectInput' class is added to the input*/
+input.incorrectInput:invalid {
+    border: 1px solid #ad0b2e;
+    background-color: rgba(173, 11, 46, 0.4);
+}
+  
+input.incorrectInput:invalid ~ div {
+    display: block;
+}
+
+/* hide all error divs */
+input:valid ~ div {
+    display: none;
+}
+  
+input:invalid ~ div {
+    display: none;
+}
+
+/* Fixes horizontal scroll due to iframe on smaller devices. */
+@media (max-width: 768px) {
+    iframe {
+        max-width: 325px;
+    }
 }

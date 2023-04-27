@@ -1,0 +1,142 @@
+/* Project:  Project 5
+Name: Isaac Reyes
+Submitted: 4/26/23
+ 
+I declare that the following source code was written by me, or provided
+by the instructor for this project. I understand that copying source
+code from any other source, providing source code to another student, 
+or leaving my code on a public web site constitutes cheating.
+I acknowledge that  If I am found in violation of this policy this may result
+in a zero grade, a permanent record on file and possibly immediate failure of the class.
+ 
+Reflection (1-2 paragraphs): Once again another html page. The most challenging part
+    was getting the nesting correct. However, once you get that taken care of it is 
+    nice to see everything fall into place nicely especially with the correct css. I
+    also utilized fontawesome and google fonts in this page and like how it looks. */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Biking | Log Visit</title>
+
+    <link rel="stylesheet" href="styles/style.css">
+        <!-- External sources -->
+        <link rel="stylesheet" href="styles/style.css">
+        <script defer src="script/validation.js"></script>
+        <script defer src="script/main.js"></script>
+        <script defer src="script/page.js"></script>
+    
+        <script src="https://kit.fontawesome.com/5f7171e3f3.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Raleway&display=swap" rel="stylesheet"> 
+    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Montserrat&family=Raleway&family=Tiro+Devanagari+Hindi&display=swap" rel="stylesheet">
+
+        <style>
+            body {
+                background-color: var(--background-color-main);
+            }
+
+            .card {
+                height: auto;
+                background-color: var(--background-color-main);
+            }
+
+            .form {
+                background-color: var(--background-color-secondary);
+            }
+
+        </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="navbar">
+            <ul class="header-nav">
+                <li><a><i id="theme-switch" class="fa-solid fa-toggle-on fa-lg"></a></i></li>
+                <li><a href="index.html"><i id="logo" class="fa-solid fa-mountain-sun"></i></a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="visit.html">Log Visit</a></li>
+            </ul>
+        </header>
+    </div>
+    
+    <!-- Pop up -->
+    <section id="visitor" class="card">
+        <div class="formContainer">
+            <form novalidate id="form" class="form">
+                <div class="formItems">
+                    <label class="label" for="firstName">First Name</label>
+                    <input class="input" type="text" name="firstName" id="firstName" placeholder="John">
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="formItems">
+                    <label class="label" for="lastName">Last Name</label>
+                    <input class="input" type="text" name="lastName" id="lastName" placeholder="Doe">
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="formItems">
+                    <label class="label" for="address">Address</label>
+                    <input class="input" type="text" name="address" id="address" placeholder="542 Nowhere St">
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="formItems">
+                    <label class="label" for="city">City</label>
+                    <input class="input" type="text" name="city" id="city" placeholder="Nowhereville">
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="formItems">
+                    <label class="label" for="state">State</label>
+                    <input class="input" type="text" name="state" id="state" placeholder="UT">
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="formItems">
+                    <label class="label" for="zip">Zip Code</label>
+                    <input class="input" type="text" name="zip" id="zip" placeholder="12345">
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="formItems">
+                    <label class="label" for="phone">Phone Number</label>
+                    <input class="input" type="text" name="phone" id="phone" placeholder="123-456-7890">
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="formItems">
+                    <label class="label" for="email">Email Address</label>
+                    <input class="input" type="text" name="email" id="email" placeholder="John@mail.com">
+                    <div class="errorMessage"></div>
+                </div>
+                <div class="find">
+                    <h2>How did you find out about us?</h2>
+                    <div class="checkboxContainer">
+                        <div>
+                            <input type="checkbox" id='google' name='findPage' value="google">
+                            <label for="google">Google Search</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id='friend' name='findPage' value="friend">
+                            <label for="friend">Friend</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id='newspaper' name='findPage' value="newspaper">
+                            <label for="newspaper">News Paper</label>
+                            <div class="errorMessage"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="submitItem">
+                    <input class="submitBtn" type="submit" id="submit" value="Register">
+                </div>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
